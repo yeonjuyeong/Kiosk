@@ -78,7 +78,6 @@ Parent root = FXMLLoader.load(getClass().getResource("Sample.fxml"));
     
     }
 ```
-![image](https://github.com/yeonjuyeong/Kiosk/assets/123055714/2423aefb-7e75-4790-8407-ead0c472016d)
 
 <br>총주문금액이 0이면 메세지 출력(메뉴선택, 계산하기 버튼 클릭후 주문해주세요) 그 외에는(총주문금액이 0이 아니면)
 <br>DB접속 sql문 작성(현재 주문내역을 orderlist_accounts 테이블에 삽입하기)쿼리 실행 실행 결과가 있으면 메시지출력(주문 완료됨) 변수값과 화면 내용 초기화
@@ -136,6 +135,32 @@ Parent root = FXMLLoader.load(getClass().getResource("Sample.fxml"));
   ![image](https://github.com/yeonjuyeong/Kiosk/assets/123055714/b3af9533-287a-43bd-a488-4e65e7beabdc)
 <br>사용자의 주문번호,사용시간,메뉴1,메뉴2,메뉴3,총합값 등을 저장하는 sql문
 ![image](https://github.com/yeonjuyeong/Kiosk/assets/123055714/c94162d1-cacf-4f43-888c-469c590aa9c6)
+
+### dbconnect
+<br>db의 드라이버, url, 이름, 비밀번호를 지정, 드라이버 클래스를 동적으로 로드한 후 데이터베이스에 연결함
+```java
+		String driver="oracle.jdbc.driver.OracleDriver";//데이터베이스 드라이버의 클래스 이름을 지정합니다.
+		String url="jdbc:oracle:thin:@localhost:1521:xe";//데이터베이스 연결 URL을 지정합니다.
+		String user="cafe2";//데이터베이스에 사용할 사용자 이름을 지정합니다.
+		String password="cafe2";//데이터베이스에 사용할 사용자 비밀번호를 지정합니다.
+```
+
+<br> 드라이버 클래스를 동적으로 로드한 후 데이터베이스에 연결한 후 디비 연결 성공, 실패를 출력
+```java
+		try {
+			Class.forName(driver);
+			DBconn=DriverManager.getConnection(url, user, password);
+			System.out.println("디비 연결 성공-20230509");
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("디비 연결 실패-20230509");
+		}
+		
+		
+		
+		
+		return DBconn;
+```
 
 ### adminlogin
 
@@ -215,7 +240,7 @@ else {
 			}
    ```
 
-
+### 
 
 
 
