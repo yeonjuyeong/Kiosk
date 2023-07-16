@@ -167,7 +167,7 @@ Parent root = FXMLLoader.load(getClass().getResource("Sample.fxml"));
 			alert.show();
 		}
 ```
-<br>아이디와 비밀번호에 값이 들어있다면 DB에 값을 
+<br>아이디와 비밀번호에 값이 들어있다면 DB에 있는 admin_id와 admin_password에 값이 있는가를 확인함
 ```java
 else {
 			DBconnect conn = new DBconnect();
