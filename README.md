@@ -167,7 +167,8 @@ Parent root = FXMLLoader.load(getClass().getResource("Sample.fxml"));
 			alert.show();
 		}
 ```
-<br>아이디와 비밀번호에 값이 들어있다면 DB에 있는 admin_id와 admin_password에 값이 있는가를 확인함
+
+<br>아이디와 비밀번호에 값이 들어있다면 DB에 있는 admin_id와 admin_password를 조회함
 ```java
 else {
 			DBconnect conn = new DBconnect();
@@ -179,7 +180,40 @@ else {
 					+ " and admin_password = ?";
 ```
 
+<br>sql문을 준비한 후 첫번째 ?를 IdTextField에 넣고 두번째 ?를 PwPasswordField에 텍스트 값을 설정한다. sql을 실행하고 그 결과를 rs 변수에 저장한다.
+```java
+			try {
+				PreparedStatement ps = conn2.prepareStatement(sql);
+				
+				ps.setString(1, IdTextField.getText());
+				ps.setString(2, PwPasswordField.getText());
+				
+				ResultSet rs = ps.executeQuery();
+```
 
+<br>rs에 값이 db에 있는 값과 똑같으면 실행해서 어드민로그인창을 띄우고 다르면 로그인 실패창을 띄운다.
+```java
+				if(rs.next()) {
+					try {
+						Parent root = FXMLLoader.load(getClass().getResource("Admindb.fxml"));
+						Scene scene = new Scene(root);
+						Stage stage = new Stage();
+						stage.setScene(scene);
+						stage.show();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}	
+				}else {
+					Alert alert = new Alert(AlertType.WARNING);
+					alert.setContentText("로그인 실패");
+					alert.show();
+				}
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+   ```
 
 
 
