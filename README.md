@@ -1,6 +1,6 @@
 # Kiosk
 
-### main
+## main
 <br>밑에 코드는 JavaFX에서 SceneBuilder에 만들어놓은 결과물을 가져오는 코드이다.
 ``` java
 Parent root = FXMLLoader.load(getClass().getResource("Sample.fxml"));
@@ -12,7 +12,7 @@ Parent root = FXMLLoader.load(getClass().getResource("Sample.fxml"));
 ```
 ![image](https://github.com/yeonjuyeong/Kiosk/assets/123055714/58f0b6fe-3bbf-4cc8-bbf6-84593f3260ec)
 
-### samplecontroller
+## samplecontroller
 <br>버튼만들기
 ```java
  @FXML private Button
@@ -136,7 +136,7 @@ Parent root = FXMLLoader.load(getClass().getResource("Sample.fxml"));
 <br>사용자의 주문번호,사용시간,메뉴1,메뉴2,메뉴3,총합값 등을 저장하는 sql문
 ![image](https://github.com/yeonjuyeong/Kiosk/assets/123055714/c94162d1-cacf-4f43-888c-469c590aa9c6)
 
-### dbconnect
+## dbconnect
 <br>db의 드라이버, url, 이름, 비밀번호를 지정, 드라이버 클래스를 동적으로 로드한 후 데이터베이스에 연결함
 ```java
 		String driver="oracle.jdbc.driver.OracleDriver";//데이터베이스 드라이버의 클래스 이름을 지정합니다.
@@ -162,7 +162,7 @@ Parent root = FXMLLoader.load(getClass().getResource("Sample.fxml"));
 		return DBconn;
 ```
 
-### adminlogin
+## adminlogin
 
 ![image](https://github.com/yeonjuyeong/Kiosk/assets/123055714/2423aefb-7e75-4790-8407-ead0c472016d)
 
