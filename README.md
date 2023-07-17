@@ -265,8 +265,7 @@ else {
 
 ### admindb
 
-![image](https://github.com/yeonjuyeong/Kiosk/assets/123055714/8aec9f20-4c97-4f43-b95a-52f2366cd8d5)
-
+![image](https://github.com/yeonjuyeong/Kiosk/assets/123055714/17d08d78-5c3d-4b34-9fc7-f9ec21890f70)
 
 <br>해당 컬럼과 데이터 모델의 속성을 연결
 ![image](https://github.com/yeonjuyeong/Kiosk/assets/123055714/c24e08e7-a6ee-41bf-9b4c-6ecbcb75a1ba)
@@ -302,8 +301,9 @@ else {
 		}	
 ```
 
-<br>데이터베이스에서 조회한 주문 목록을 테이블 뷰에 표시하고, 주문 수량과 총 가격을 텍스트아레아에 표시
-![image](https://github.com/yeonjuyeong/Kiosk/assets/123055714/5f089a1f-7fb1-482a-8c21-cad5547c6e50)
+<br>데이터베이스에서 조회한 주문 목록을 table view에 표시하고, 주문 수량과 총 가격을 text area에 표시
+![image](https://github.com/yeonjuyeong/Kiosk/assets/123055714/ee20c7d3-0cf5-4802-bfef-f6f84b0d20af)
+
 
 ```java
 		try {
