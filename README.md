@@ -285,6 +285,8 @@ else {
 
 <br>db접속한 후 sql문으로 데이터 검색 쿼리 실행
 ```java
+	@FXML
+	private void searchButtonAction(ActionEvent event) {
 		mcount1=0;
 		mcount2=0;
 		mcount3=0;
@@ -339,7 +341,86 @@ else {
 		}
 ```
 
+<br>날짜칸에 아무것도 쓰지 않으면 경고메세지
+```java
+	@FXML
+	private void datesearchButtonAction(ActionEvent event) {
+		//만약에 날짜가 비어있으면 ==> 경고메세지
+		//그 외에는
+			//디비 접속 ==> 해당 날짜의 데이터를 검색
+		
+		if(dateDatePicker.getValue()==null) {
+			//경고메세지
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("ecyce");
+			alert.setContentText("날짜를 먼저 선택하고 조회하세요");
+			alert.show();
+		}
+```
 
+<br>날짜를 선택했는지 묻는 if문과 sql문에 조건(지정한 날짜(order_time 필드)에 해당하는 주문 데이터를 조회)을 넣는 것 빼고는 searchButtonAction과 코드가 같다
+```java
+@FXML
+	private void datesearchButtonAction(ActionEvent event) {
+		if(dateDatePicker.getValue()==null) {
+			//경고메세지
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("ecyce");
+			alert.setContentText("날짜를 먼저 선택하고 조회하세요");
+			alert.show();
+		}else {
+			DBconnect2 conn = new DBconnect2();
+			Connection conn2 = conn.getconn();
+			
+			String sql="select idx, order_time, count1, count2, count3, sum"
+					+ " from orderlist_accounts1"
+					+ " where to_char(order_time, 'yyyy-mm-dd')=?"
+					+ " order by idx";	
+```
 
+<br>시작 날짜와 마지막 날짜 둘 다 선택하지 않으면 경고를 출력하는 if문과 sql문 조건( 주문일시가 A 날짜부터 B 날짜 사이인 경우)출력을 넣는다.
+<br>이외에는 searchButtonAction과 코드가 같다
+```java
+@FXML
+		private void datesearch2ButtonAction(ActionEvent event) {
+			
+			if(startDatePicker.getValue()==null || endDatePicker.getValue()==null) {
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setContentText("날짜를 둘다 선택하고 조회하세요");
+				alert.show();
+			}else {
+				DBconnect2 conn = new DBconnect2();
+				Connection conn2 = conn.getconn();
+				
+				String sql = "select idx, order_time, count1, count2, count3, sum"
+						+" from orderlist_accounts1"
+						+" where order_time >= ? and order_time <= ?"
+						//+" where order_time between ? and ?"
+						//주문일시가 A 날짜부터 B 날짜 사이인 경우
+						+" order by idx";
+```
+
+<br>전체조회, 날짜별 조회, 기간별 조회버튼을 눌렀을때 출력된 값을 countButtonAction,sumButtonAction에 그래프로 나타내준다.
+```java
+	@FXML
+	private void countButtonAction(ActionEvent event) {
+		rsPieChart.setTitle("메뉴별 판매수량");
+		rsPieChart.setData(FXCollections.observableArrayList(
+				new PieChart.Data("아메리카노"+mcount1+"잔", mcount1), 
+				new PieChart.Data("카푸치노"+mcount2+"잔", mcount2),
+				new PieChart.Data("카페라떼"+mcount3+"잔", mcount3)
+				));
+	}
+	
+	@FXML
+	private void sumButtonAction(ActionEvent event) {
+		rsPieChart.setTitle("메뉴별 판매금액");
+		rsPieChart.setData(FXCollections.observableArrayList(
+				new PieChart.Data("아메리카노"+mcount1*1000+"원", mcount1*1000), 
+				new PieChart.Data("카푸치노"+mcount2*2000+"원", mcount2*2000),
+				new PieChart.Data("카페라떼"+mcount3*3000+"원", mcount3*3000)
+				));
+	}
+```
 
 
