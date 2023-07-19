@@ -143,7 +143,7 @@ Parent root = FXMLLoader.load(getClass().getResource("Sample.fxml"));
 		}
     }  
 ```
-<br>(admin_accounts테이블) 관리자의 아이디, 비밀번호를 저장한 sql문
+<br>(admin_accounts테이블) 관리자의 아이디, 비밀번호를 저장한 sql문 
   ![image](https://github.com/yeonjuyeong/Kiosk/assets/123055714/b3af9533-287a-43bd-a488-4e65e7beabdc)
 <br>(orderlist_accounts1테이블) 사용자의 주문번호,사용시간,메뉴1,메뉴2,메뉴3,총합값 등을 저장하는 sql문
 ![image](https://github.com/yeonjuyeong/Kiosk/assets/123055714/c94162d1-cacf-4f43-888c-469c590aa9c6)
